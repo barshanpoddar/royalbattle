@@ -440,19 +440,20 @@ class _TournamentListScreenState extends State<TournamentListScreen> {
                       });
                     },
                   ),
-                  Column(
-                    children: ['Upcoming', 'Live Now', 'Starting Soon'].map((String option) {
-                      return RadioListTile<String>(
-                        title: Text(option),
-                        value: option,
-                        groupValue: selectedTime,
-                        onChanged: (value) {
-                          setModalState(() {
-                            selectedTime = value!;
-                          });
-                        },
-                      );
-                    }).toList(),
+                  RadioGroup<String>(
+                    onChanged: (value) {
+                      setModalState(() {
+                        selectedTime = value!;
+                      });
+                    },
+                    child: Column(
+                      children: ['Upcoming', 'Live Now', 'Starting Soon'].map((String option) {
+                        return RadioListTile<String>(
+                          title: Text(option),
+                          value: option,
+                        );
+                      }).toList(),
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -1104,7 +1105,9 @@ class LeaderboardScreen extends StatelessWidget {
         String badge = '';
         if (rank <= 3) {
           badge = ['Emperor', 'King', 'Hero'][rank - 1];
-        } else if (rank <= 10) badge = 'Warrior';
+        } else if (rank <= 10) {
+          badge = 'Warrior';
+        }
 
         return Card(
           margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
@@ -1238,7 +1241,9 @@ class LeaderboardScreen extends StatelessWidget {
         String badge = '';
         if (rank <= 3) {
           badge = ['Emperor', 'King', 'Hero'][rank - 1];
-        } else if (rank <= 10) badge = 'Warrior';
+        } else if (rank <= 10) {
+          badge = 'Warrior';
+        }
 
         int totalKills = 5000 - (index * 200);
         double avgKills = (totalKills / 50).roundToDouble(); // Assume 50 matches
