@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'champions_screen.dart';
 import 'profile_screen.dart';
+import 'theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,10 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Royal Battle',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.darkTheme,
       home: HomePage(),
     );
   }
@@ -34,16 +32,16 @@ class HomeScreen extends StatelessWidget {
           // 1. Header (Logo + Notifications + Support)
           Container(
             height: 60,
-            color: Colors.grey[200],
+            color: AppTheme.headerGrey,
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Royal Battle Logo', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                Text('Royal Battle Logo', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppTheme.textPrimary)),
                 Row(
                   children: [
-                    IconButton(icon: Icon(Icons.notifications), onPressed: () {}),
-                    IconButton(icon: Icon(Icons.support), onPressed: () {}),
+                    IconButton(icon: Icon(Icons.notifications, color: AppTheme.textPrimary), onPressed: () {}),
+                    IconButton(icon: Icon(Icons.support, color: AppTheme.textPrimary), onPressed: () {}),
                   ],
                 ),
               ],
@@ -1636,7 +1634,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: AppTheme.primaryGold,
+        unselectedItemColor: AppTheme.textSecondary,
+        backgroundColor: AppTheme.backgroundBlack,
         onTap: _onItemTapped,
       ),
     );
