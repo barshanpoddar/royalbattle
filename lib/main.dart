@@ -180,7 +180,7 @@ class TournamentScreen extends StatefulWidget {
   const TournamentScreen({super.key});
 
   @override
-  _TournamentScreenState createState() => _TournamentScreenState();
+  State<TournamentScreen> createState() => _TournamentScreenState();
 }
 
 class _TournamentScreenState extends State<TournamentScreen> {
@@ -315,7 +315,7 @@ class TournamentListScreen extends StatefulWidget {
   const TournamentListScreen({super.key, required this.category});
 
   @override
-  _TournamentListScreenState createState() => _TournamentListScreenState();
+  State<TournamentListScreen> createState() => _TournamentListScreenState();
 }
 
 class _TournamentListScreenState extends State<TournamentListScreen> {
@@ -440,7 +440,7 @@ class _TournamentListScreenState extends State<TournamentListScreen> {
                       });
                     },
                   ),
-                  Row(
+                  Column(
                     children: ['Upcoming', 'Live Now', 'Starting Soon'].map((String option) {
                       return RadioListTile<String>(
                         title: Text(option),
@@ -1125,7 +1125,7 @@ class LeaderboardScreen extends StatelessWidget {
                   height: 40,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                      color: Color.fromRGBO(rankColor.red, rankColor.green, rankColor.blue, 0.2),
+                      color: Color.fromRGBO((rankColor.r * 255).round().clamp(0, 255), (rankColor.g * 255).round().clamp(0, 255), (rankColor.b * 255).round().clamp(0, 255), 0.2),
                     border: Border.all(color: rankColor, width: 2),
                   ),
                   child: Center(
@@ -1582,7 +1582,7 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {

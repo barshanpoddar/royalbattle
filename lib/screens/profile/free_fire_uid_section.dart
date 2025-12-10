@@ -42,13 +42,15 @@ class FreeFireUidSection extends StatelessWidget {
                 icon: const Icon(Icons.copy, color: kPrimaryColor),
                 onPressed: () async {
                   await Clipboard.setData(const ClipboardData(text: '9876543210'));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('UID copied to clipboard'),
-                      backgroundColor: kPrimaryColor,
-                      behavior: SnackBarBehavior.floating,
-                    ),
-                  );
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('UID copied to clipboard'),
+                        backgroundColor: kPrimaryColor,
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                  }
                 },
               ),
             ],
